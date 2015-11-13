@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>hdsaoda</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/controllers/UserController.js"></script>
+    <script type="text/javascript" src="app/controllers/ItemsController.js"></script>
+
+    <script type="text/javascript" src="app/services/ClimaService.js"></script>
+    <script type="text/javascript" src="app/controllers/ClimaController.js"></script>
+  </head>
+  <body ng-app="app">
+    <div ng-controller="UserController as usr">
+      <h1>{{usuario.nombre}}</h1>
+      <h3>Cedula:{{usuario.cedula}}</h3>
+      <h3>Edad:{{usuario.edad}}</h3>
+
+      <button type="button" name="button" ng-click="subirEdad()">
+        Subir Edad
+      </button>
+
+    </div>
+    <div ng-controller="ItemsController">
+      <input type="text" placeholder="Buscar" ng-model="busqueda">
+      <div ng-repeat="i in items|filter:busqueda">
+        <h1>{{i.nombre}}</h1>
+        <h3>precio: {{i.precio|currency}}</h3>
+        <p>{{i.des}}</p>
+      </div>
+    </div>
+
+    <div ng-controller="ClimaController">
+      <h1>{{getDes()}}</h1>
+      <h3>temperatura:{{getTemp()}}</h3>
+      <h3>humedad:{{getHum()}}</h3>
+      <h3>presion:{{getPres()}}</h3>
+    </div>
+
+  </body>
+</html>
